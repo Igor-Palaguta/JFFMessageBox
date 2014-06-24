@@ -13,6 +13,7 @@ static JFFAlertViewComparator unique_comparator_ = nil;
 
 @property ( nonatomic, strong ) UIAlertView* alertView;
 @property ( nonatomic, strong ) NSMutableArray* alertButtons;
+@property ( nonatomic, assign ) BOOL dismissing;
 
 -(void)forceShow;
 
@@ -233,12 +234,21 @@ static JFFAlertViewComparator unique_comparator_ = nil;
       self.didPresentHandler( self );
 }
 
--(void)alertView:( UIAlertView* )alert_view_ didDismissWithButtonIndex:( NSInteger )buttonIndex_
+-(void)alertView:( UIAlertView* )alert_view_ didDismissWithButtonIndex:( NSInteger )index_
 {
    JFFAlertViewQueue* queue_ = [ [ self class ] sharedQueue ];
-
    [ queue_ removeAlert: self ];
    [ queue_ showTopAlertView ];
+}
+
+-(void)alertView:( UIAlertView* )alert_view_ willDismissWithButtonIndex:( NSInteger )index_
+{
+   self.dismissing = YES;
+}
+
+-(void)willPresentAlertView:( UIAlertView * )alert_view_
+{
+   self.dismissing = NO;
 }
 
 -(BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView*)alert_view_

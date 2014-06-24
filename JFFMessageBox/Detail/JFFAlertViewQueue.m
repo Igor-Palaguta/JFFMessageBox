@@ -74,6 +74,9 @@
 
    for ( JFFAlertViewContext* context_ in self.queue )
    {
+      if ( [ context_.alertView dismissing ] )
+         continue;
+
       if ( comparator_( alert_view_, context_.alertView ) )
       {
          NSLog(@"ignore alert view: %@", alert_view_);

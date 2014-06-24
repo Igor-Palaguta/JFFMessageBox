@@ -1,11 +1,13 @@
 #include "JFFAlertBlock.h"
 #include "JFFAlertViewComparator.h"
 
+#import "JFFBaseAlertView.h"
+
 #import <UIKit/UIKit.h>
 
 @class JFFAlertView;
 
-@interface JFFAlertView : NSObject
+@interface JFFAlertView : NSObject< JFFBaseAlertView >
 
 @property ( nonatomic, copy ) NSString* title;
 @property ( nonatomic, copy ) NSString* message;

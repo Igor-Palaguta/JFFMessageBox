@@ -3,5 +3,6 @@
 @protocol JFFBaseAlertView <NSObject>
 
 -(void)forceDismiss;
+-(BOOL)dismissing;
 
 @end

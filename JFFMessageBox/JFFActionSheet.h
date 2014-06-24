@@ -1,8 +1,9 @@
 #import "JFFAlertBlock.h"
+#import "JFFBaseAlertView.h"
 
 #import <UIKit/UIKit.h>
 
-@interface JFFActionSheet : NSObject
+@interface JFFActionSheet : NSObject< JFFBaseAlertView >
 
 @property ( nonatomic, assign ) UIActionSheetStyle actionSheetStyle;
 

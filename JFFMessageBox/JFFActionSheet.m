@@ -11,6 +11,7 @@
 @property ( nonatomic, strong ) UIActionSheet* actionSheet;
 @property ( nonatomic, strong ) NSMutableArray* alertButtons;
 @property ( nonatomic, strong ) JFFAlertButton* cancelButton;
+@property ( nonatomic, assign ) BOOL dismissing;
 
 @end
 
@@ -157,6 +158,16 @@
    JFFAlertButton* alert_button_ = [ self.alertButtons objectAtIndex: button_index_ ];
    if ( alert_button_ )
       alert_button_.action( self );
+}
+
+-(void)willPresentActionSheet:( UIActionSheet* )action_sheet_
+{
+   self.dismissing = NO;
+}
+
+-(void)actionSheet:( UIActionSheet* )action_sheet_ willDismissWithButtonIndex:( NSInteger )button_index_
+{
+   self.dismissing = YES;
 }
 
 -(void)actionSheet:( UIActionSheet* )action_sheet_ didDismissWithButtonIndex:( NSInteger )button_index_
