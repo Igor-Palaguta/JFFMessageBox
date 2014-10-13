@@ -162,10 +162,10 @@ static JFFAlertViewComparator unique_comparator_ = nil;
       [ other_alert_buttons_ insertObject: cancel_button_ atIndex: 0 ];
    }
 
-   JFFAlertView* alert_view_ = [ [ self alloc ] initWithTitle: title_
-                                                       message: message_
-                                             cancelButtonTitle: cancel_button_.title
-                                        otherButtonTitlesArray: other_alert_string_titles_ ];
+   JFFAlertView* alert_view_ = [ [ self alloc ] initWithTitle: title_ ?: @""
+                                                      message: message_
+                                            cancelButtonTitle: cancel_button_.title
+                                       otherButtonTitlesArray: other_alert_string_titles_ ];
 
    alert_view_.alertButtons = other_alert_buttons_;
 
